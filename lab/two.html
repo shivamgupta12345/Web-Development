@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Comprehensive Form</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e0f7fa;
+            margin: 0;
+        }
+        form {
+            background: linear-gradient(145deg, #ffffff, #e0e0e0);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #00796b;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        .form-group-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group-inline div {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-group-inline div:last-child {
+            margin-right: 0;
+        }
+        .slider-value {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <h2>Dynamic Comprehensive Form</h2>
+
+        <!-- Full Name Input -->
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="enter your name" required>
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+        </div>
+
+        <!-- Inline Inputs -->
+        <div class="form-group-inline">
+            <div>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="+1234567890" required>
+            </div>
+            <div>
+                <label for="linkedin">LinkedIn Profile:</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
+            </div>
+        </div>
+
+        <!-- Date Input -->
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male"/>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="nonbinary" name="gender" value="nonbinary">
+            <label for="nonbinary">Non-binary</label>
+        </div>
+
+        <!-- Hobbies -->
+        <div class="form-group">
+            <label>Interests:</label>
+            <input type="checkbox" id="coding" name="interests" value="coding">
+            <label for="coding">Coding</label>
+            <input type="checkbox" id="traveling" name="interests" value="traveling">
+            <label for="traveling">Traveling</label>
+            <input type="checkbox" id="photography" name="interests" value="photography">
+            <label for="photography">Photography</label>
+            <input type="checkbox" id="gaming" name="interests" value="gaming">
+            <label for="gaming">Gaming</label>
+        </div>
+
+        <!-- Dropdown -->
+        <div class="form-group">
+            <label for="role">Desired Role:</label>
+            <select id="role" name="role" required>
+                <option value="">Choose a Role</option>
+                <option value="developer">Software Developer</option>
+                <option value="designer">UI/UX Designer</option>
+                <option value="data-scientist">Data Scientist</option>
+                <option value="product-manager">Product Manager</option>
+            </select>
+        </div>
+
+        <!-- Range Slider -->
+        <div class="form-group">
+            <label for="experience">Years of Experience:</label>
+            <input type="range" id="experience" name="experience" min="0" max="15" oninput="document.getElementById('exp-val').textContent = this.value + ' years'">
+            <div class="slider-value" id="exp-val">0 years</div>
+        </div>
+
+        <!-- Bio -->
+        <div class="form-group">
+            <label for="bio">Tell us about yourself:</label>
+            <textarea id="bio" name="bio" rows="5" placeholder="Share your story..."></textarea>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-group">
+            <label for="portfolio">Upload Portfolio (PDF):</label>
+            <input type="file" id="portfolio" name="portfolio" accept=".pdf">
+        </div>
+
+        <!-- Favorite Color -->
+        <div class="form-group">
+            <label for="color">Pick your favorite color:</label>
+            <input type="color" id="color" name="color">
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">Submit Application</button>
+        </div>
+    </form>
+
+</body>
+</html>

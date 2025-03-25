@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>REgistration Form</title>
+    </head>
+    <body>
+        <h2>Registration Form</h2>
+        <form action="/server">
+            <div>
+                <input type="text" placeholder="first name" name="fname" />
+                <input type="text" placeholder="Last name" name="lname" />
+            </div>
+            <div>
+              <label for="gender">please select your gender</label>
+              <select name="gender" id="gender">
+                <option value="m"> male</option>
+                <option value="f"> female</option>
+                <option value="o"> other</option>
+              </select>
+            </div>
+            <div>
+                Do you agree to all terms & conditions?
+                <input type="checkbox" name="confirmation" id="confirmation" />
+                <label for="confirmation">Yes, I agree</label>
+            </div>
+            <button>Register</button>
+
+        </form>
+    </body>
+</html>

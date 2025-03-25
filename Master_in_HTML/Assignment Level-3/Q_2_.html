@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Creation</title>
+    </head>
+    <body>
+        <form action="/server">
+            <div>
+                <label for="name">Name</label>
+            <input type="text" placeholder="enter your name" name="name" id="name">
+            </div>
+            <div>
+                sex:
+                <input type="radio" name="sex" id="male" value="male">
+                <label for="male">male</label>
+                <input type="radio" name="sex" id="female" value="female">
+                <label for="female">female</label>
+                <input type="radio" name="sex" id="other" value="other">
+                <label for="other">other</label>
+            </div>
+            <div>
+                Country:
+                <select name="country" id="country">
+                    <option value="india">India</option>
+                    <option value="other">foreign</option>
+                </select>
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" cols="30" rows="3"></textarea>
+            </div>
+            <div>
+                <input type="checkbox" name="subscribe" id="subscribe"/>
+                <label for="subscribe">Subscribe?</label>
+            </div>
+            <button>submit</button>
+            
+        </form>
+    </body>
+</html>

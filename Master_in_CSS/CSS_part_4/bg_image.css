@@ -1,0 +1,10 @@
+div{
+    height: 400px;
+    width: 200;
+    margin: auto;
+    border: 2px solid black;
+    background-image: url(bgimage.jpg);
+    background-size: cover;   /* contain , auto */
+    background-color: green;
+    color: brown;
+}

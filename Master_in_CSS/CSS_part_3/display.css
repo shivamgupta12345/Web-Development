@@ -1,0 +1,30 @@
+/* h2{
+    display: inline;
+    background-color: pink;
+}
+span{
+    display: block;
+    background-color: aqua;
+} */
+
+/* span{
+    border: 2px solid black;
+    height: 100px;
+    width: 100px;
+    background-color: pink; 
+    padding: 50px;
+    margin: 20px;
+} */
+
+div{
+    border: 2px solid black;
+    height: 100px;
+    width: 100px;
+    background-color: pink; 
+    padding: 50px;
+    margin: 20px;
+    display: inline-block;
+}
+#abc{
+    display: none;
+}

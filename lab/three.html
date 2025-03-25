@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Bookstore</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 850px;
+            width: 100%;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .book-list, .cart-list {
+            margin-top: 20px;
+        }
+        .book, .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            background: #f7f9fb;
+        }
+        button {
+            background-color: #16a085;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #12876e;
+        }
+        .cart-total {
+            text-align: right;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        #buy-button {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Galaxy Bookstore</h1>
+        <h2>Explore Our Collection</h2>
+
+        <!-- Updated Book List -->
+        <div class="book-list">
+            <div class="book">
+                <span>Book 1: The Art of Innovation</span>
+                <span>$14.00</span>
+                <button onclick="addToCart('The Art of Innovation', 14)">Add to Cart</button>
+            </div>
+            <div class="book">
+                <span>Book 2: Journey to the Stars</span>
+                <span>$20.00</span>
+                <button onclick="addToCart('Journey to the Stars', 20)">Add to Cart</button>
+            </div>
+            <div class="book">
+                <span>Book 3: Coding for Creatives</span>
+                <span>$18.50</span>
+                <button onclick="addToCart('Coding for Creatives', 18.5)">Add to Cart</button>
+            </div>
+            <div class="book">
+                <span>Book 4: World Beyond Tomorrow</span>
+                <span>$25.00</span>
+                <button onclick="addToCart('World Beyond Tomorrow', 25)">Add to Cart</button>
+            </div>
+            <div class="book">
+                <span>Book 5: Tales of the Universe</span>
+                <span>$22.00</span>
+                <button onclick="addToCart('Tales of the Universe', 22)">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Shopping Cart Section -->
+        <h2>Your Cart</h2>
+        <div class="cart-list" id="cart-list"></div>
+
+        <!-- Cart Total and Buy Button -->
+        <div class="cart-total" id="cart-total">Total: $0.00</div>
+        <button onclick="completePurchase()" id="buy-button" disabled>Proceed to Checkout</button>
+    </div>
+
+    <script>
+        const cart = [];
+
+        function addToCart(book, price) {
+            const item = cart.find(i => i.book === book);
+            if (item) {
+                item.quantity++;
+            } else {
+                cart.push({ book, price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById('cart-list');
+            const cartTotal = document.getElementById('cart-total');
+            const buyButton = document.getElementById('buy-button');
+
+            cartList.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <span>${item.book} (x${item.quantity})</span>
+                    <span>$${itemTotal.toFixed(2)}</span>
+                `;
+                cartList.appendChild(cartItem);
+            });
+
+            cartTotal.innerHTML = `Total: $${total.toFixed(2)}`;
+            buyButton.disabled = total === 0;
+        }
+
+        function completePurchase() {
+            if (cart.length > 0) {
+                alert("Thank you for shopping with us! Your order is confirmed.");
+                cart.length = 0;
+                updateCart();
+            }
+        }
+    </script>
+</body>
+</html>

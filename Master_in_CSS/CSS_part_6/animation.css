@@ -1,0 +1,50 @@
+.box{
+    height: 100px;
+    width: 300px;
+    background-color: pink;
+    /* animation-name: fontAnimate; */
+    /* animation-name: backgroundAnimate; */
+
+    /* animation-name: widthAnimate;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+    animation-iteration-count: 3;
+    animation-direction: normal; */
+
+    /* Animation Shorthand... */
+    animation: fontAnimate 2s ease-in 0s 3 normal;
+}
+/* blue print of animation... */
+@keyframes fontAnimate{
+    0%{
+        font-size: 10px;
+        background-color: rosybrown;
+    }
+    50%{
+        font-size: 30px;
+        background-color: aquamarine;
+    }
+    100%{
+        font-size: 40px;
+        background-color: red;
+    }
+}
+
+@keyframes backgroundAnimate{
+    from{
+        background-color: pink;
+    }
+    to{
+        background-color: greenyellow;
+    }
+}
+
+@keyframes widthAnimate{
+    from{
+        width: 10px;
+    }
+    to{
+        width: 100px;
+    }
+}
