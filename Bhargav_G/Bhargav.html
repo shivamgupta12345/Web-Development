@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Dear Kanha</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      color: #fff;
+    }
+
+    #photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin-top: 50px;
+      box-shadow: 0 0 20px #00f7ff;
+      animation: zoomIn 2s ease forwards;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 60px;
+      opacity: 0;
+      animation: fadeIn 3s ease 2s forwards;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    #musicToggle {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00f7ff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00f7ff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 👶 Photo of Bhargav -->
+  <img id="photo" src="bhargav.jpg" alt="Bhargav">
+
+  <!-- 🎉 Birthday Message -->
+   <!-- <h1> 4 </h1> -->
+   <h1>4 Month </h1>
+  <h1>🎂🎂 Happy Birthday Dear Kanha 🎂🎂</h1>
+
+  <!-- 🔊 Music Toggle Button -->
+  <button id="musicToggle">Play Music</button>
+
+  <!-- 🎆 Confetti Canvas -->
+  <canvas id="confetti"></canvas>
+
+  <!-- 🔊 Audio Element -->
+  <audio id="bgMusic" src="happy.mp3" loop></audio>
+
+  <script>
+    // Confetti Animation
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confetti = [];
+
+    for (let i = 0; i < 300; i++) {
+      confetti.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        size: Math.random() * 6 + 4,
+        speed: Math.random() * 3 + 1,
+        color: `hsl(${Math.random() * 360}, 100%, 50%)`
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(c => {
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+        ctx.fillStyle = c.color;
+        ctx.fill();
+      });
+      move();
+    }
+
+    function move() {
+      confetti.forEach(c => {
+        c.y += c.speed;
+        if (c.y > canvas.height) {
+          c.y = -10;
+          c.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    function update() {
+      draw();
+      requestAnimationFrame(update);
+    }
+
+    update();
+
+    // Responsive canvas
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Music Control
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicToggle");
+    let isPlaying = false;
+
+    btn.addEventListener("click", () => {
+      if (!isPlaying) {
+        music.play();
+        btn.innerText = "Pause Music";
+      } else {
+        music.pause();
+        btn.innerText = "Play Music";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+</html>
